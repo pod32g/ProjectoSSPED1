@@ -1,3 +1,5 @@
+import json
+
 class Validar():
     @staticmethod
     def s_input(message) -> str:
@@ -23,3 +25,20 @@ class Validar():
             return False
         else:
             return True
+
+
+class Tools():
+    '''
+    theory says that this will receive a json
+    [{ name: 'group', alumni: [{name: 'test', gpa: 'test' }]}]
+    '''
+
+    @staticmethod
+    def toFile(data, filename):
+        with open(filename) as file:
+            file.write(data)
+
+    @staticmethod
+    def fromFile(filename):
+        with open(filename) as file:
+            return json.load(file)
