@@ -1,6 +1,7 @@
 import json
 
-class Validar():
+
+class Validar:
     @staticmethod
     def s_input(message) -> str:
         x = input(message)

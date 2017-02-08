@@ -1,7 +1,7 @@
 from .validar import Validar as v
 
 
-class Grupo():
+class Grupo:
     def __init__(self, nombre=None, siguiente=None):
         self.nombre = nombre
         self.primero = None

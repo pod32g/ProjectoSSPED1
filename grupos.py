@@ -1,7 +1,7 @@
 from .validar import Validar as v
 
 
-class Grupos():
+class Grupos:
     def __init__(self):
         self.primero = None
 
@@ -26,6 +26,15 @@ class Grupos():
             print(h.nombre + ": ")
             h.show()
             h = h.siguiente
+
+    def getGroup(self, name):
+        h = self.primero
+        while not h == None and not h.nombre == name:
+            h = h.siguiente
+        if h == None:
+            return "nuevo"
+        else:
+            return h
 
     def modify(self, nombre):
         h = self.primero
