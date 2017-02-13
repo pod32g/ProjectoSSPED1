@@ -1,18 +1,41 @@
+from alumno import Alumno
 from grupo import Grupo
 from grupos import Grupos
-from .validar import Validar as v
-
-
-def menu():
-    return v.i_input("Menu\n")
+from validar import Validar as v
 
 
 def main():
     grupos = Grupos()
-    if menu() == 1:
-        name = v.s_input("Ingrese el nombre del grupo: ")
-        if grupos.getGroup(name) == "nuevo":
-            g = Grupo()
-            g.nombre = name
-            # Me sigue dando flojera terminar el menu :v
+    while True:
+        m = v.i_input("Menu\n")
+        if int(m) == 1:
+            name = v.s_input("Ingrese el nombre del grupo: ")
+            g = grupos.getGroup(name)
+            if g == "nuevo":
+                g = Grupo()
+                g.nombre = name
+                a = None
+                while 1 == 1:
+                    n = v.s_input("Ingrese nombre de alumno: ")
+                    c = v.i_input("Ingrese codigo de alumno: ")
+                    cc = v.i_input("Ingrese promedio de alumno: ")
+                    a = Alumno(nombre=n, codigo=c, calificacion=cc)
+                    g.add(a)
+                    if not v.s_input("Desea agregar otro alumno?: ") == "si":
+                        break
+                grupos.add(g)
+            else:
+                while 1 == 1:
+                    n = v.s_input("Ingrese nombre de alumno: ")
+                    c = v.v_code(v.i_input("Ingrese codigo de alumno: "))
+                    cc = v.i_input("Ingrese promedio de alumno: ")
+                    a = Alumno(nombre=n, codigo=c, calificacion=cc)
+                    g.add(a)
+                    if not v.s_input("Desea agregar otro alumno?: ") == "si":
+                        break
+        elif int(m) == 2:
+            grupos.show()
 
+
+if __name__ == '__main__':
+    main()

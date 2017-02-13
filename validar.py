@@ -1,5 +1,6 @@
 import json
-import os
+from os import listdir
+from os.path import isfile, join
 
 
 class Validar:
@@ -48,4 +49,5 @@ class Tools():
     @staticmethod
     def getFilesFromDir(dirName):
         # Theory says that this will return all files from a dir using an array
-        pass
+        files = [f for f in listdir(dirName) if isfile(join(dirName, f))]
+        return files

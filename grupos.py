@@ -1,4 +1,4 @@
-from .validar import Validar as v
+from validar import Validar as v
 
 
 class Grupos:
@@ -16,11 +16,15 @@ class Grupos:
             self.primero = grupo
         else:
             h = self.primero
-            while not h == None:
+            while not h.siguiente == None:
                 h = h.siguiente
-            h = grupo
+            h.siguiente = grupo
 
     def show(self):
+        if self.isEmpty():
+            print("No hay nada que mostrar")
+            return None
+
         h = self.primero
         while not h == None:
             print(h.nombre + ": ")

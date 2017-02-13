@@ -1,4 +1,4 @@
-from .validar import Validar as v
+from validar import Validar as v
 
 
 class Grupo:
@@ -39,15 +39,49 @@ class Grupo:
     def show(self):
         h = self.primero
         while not h == None:
-            print(h.nombre)
-            print(h.codigo)
-            print(h.calificacion)
+            print(f"\tNombre:   {h.nombre}\n" \
+                  f"\tCodigo:   {h.codigo}\n" \
+                  f"\tPromedio: {h.calificacion}\n")
             h = h.siguiente
 
-    def bubble(self):
+    def getIndex(self, index):
+        i = 0
         h = self.primero
-        # Theory says that this will sort using bubble
+        while not i == index:
+            if i == index:
+                break
+            h = h.siguiente
+            i += 1
+        # print(h)
+        return h
 
-    def quick(self):
+    def swapIndex(self, a, b):
+        i = 0
         h = self.primero
-        # Theory says that this will sort using quicksort
+        while not i == a:
+            if i == a:
+                break
+            h = h.siguiente
+            i += 1
+        h.nombre = b.nombre
+        h.codigo = b.codigo
+        h.calificacion = b.calificacion
+
+    def quick(self, low, high):
+        i = low
+        j = high
+        pv = self.getIndex(int((low + high) / 2))
+
+        while i <= j:
+            while self.getIndex(i).codigo < pv.codigo:
+                i += 1
+            while self.getIndex(j).codigo > pv.codigo:
+                j -= 1
+            if i <= j:
+                t = self.getIndex(i)
+                self.swapIndex(i, self.getIndex(j))
+                self.swapIndex(j, t)
+            if low < j:
+                self.quick(low, j)
+            if i < high:
+                self.quick(i, high)
