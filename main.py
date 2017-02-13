@@ -15,3 +15,4 @@ def main():
             g = Grupo()
             g.nombre = name
             # Me sigue dando flojera terminar el menu :v
+

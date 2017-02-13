@@ -1,4 +1,5 @@
 import json
+import os
 
 
 class Validar:
@@ -43,3 +44,8 @@ class Tools():
     def fromFile(filename):
         with open(filename) as file:
             return json.load(file)
+
+    @staticmethod
+    def getFilesFromDir(dirName):
+        # Theory says that this will return all files from a dir using an array
+        pass

@@ -43,3 +43,11 @@ class Grupo:
             print(h.codigo)
             print(h.calificacion)
             h = h.siguiente
+
+    def bubble(self):
+        h = self.primero
+        # Theory says that this will sort using bubble
+
+    def quick(self):
+        h = self.primero
+        # Theory says that this will sort using quicksort
