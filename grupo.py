@@ -16,13 +16,21 @@ class Grupo:
                 h = h.siguiente
             h.siguiente = alumno
 
+    def getSize(self):
+        h = self.primero
+        i = 0
+        while not h == None:
+            h = h.siguiente
+            i += 1
+        return i
+
     def modify(self, codigo):
         h = self.primero
         while not h == None and not h.codigo == codigo:
             h = h.siguiente
-        h.nombre = v.s_input("Ingrese Nombre")
-        h.codigo = v.v_code(v.i_input("Ingrese codigo"))
-        h.calificacion = v.i_input("Ingrese promedio")
+        h.nombre = v.s_input("Ingrese Nombre: ")
+        h.codigo = v.i_input("Ingrese codigo: ")
+        h.calificacion = v.i_input("Ingrese promedio: ")
 
     def delete(self, codigo):
         h = self.primero

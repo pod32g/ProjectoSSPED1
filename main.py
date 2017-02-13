@@ -7,7 +7,12 @@ from validar import Validar as v
 def main():
     grupos = Grupos()
     while True:
-        m = v.i_input("Menu\n")
+        m = v.i_input("Menu\n" \
+                      "1-Agregar\n" \
+                      "2-Mostrar\n" \
+                      "3-Modificar\n" \
+                      "4-Borrar\n" \
+                      "5-Ordenar\n")
         if int(m) == 1:
             name = v.s_input("Ingrese el nombre del grupo: ")
             g = grupos.getGroup(name)
@@ -35,6 +40,12 @@ def main():
                         break
         elif int(m) == 2:
             grupos.show()
+        elif int(m) == 3:
+            grupos.modify(v.s_input("Ingrese el nombre del grupo: "))
+        elif int(m) == 4:
+            grupos.delete_from(v.s_input("Ingrese el nombre del grupo: "))
+        elif int(m) == 5:
+            grupos.sort(v.s_input("Ingrese el nombre del grupo: "))
 
 
 if __name__ == '__main__':

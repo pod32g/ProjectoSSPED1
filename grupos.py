@@ -45,9 +45,9 @@ class Grupos:
         while not h == None and not h.nombre == nombre:
             h = h.siguiente
 
-        y = v.s_input("1-Cambiar nombre de grupo\n2-Editar alumno de grupo")
-        if y == 1:
-            h.nombre = v.s_input("Ingrese el nuevo nombre")
+        y = v.i_input("1-Cambiar nombre de grupo\n2-Editar alumno de grupo\n")
+        if int(y) == 1:
+            h.nombre = v.s_input("Ingrese el nuevo nombre: ")
         else:
             print("Alumnos disponibles: ")
             h.show()
@@ -56,6 +56,19 @@ class Grupos:
                 h.modify(codigo)
             else:
                 print("Error, codigo invalido")
+
+    def delete_from(self, nombre):
+        if v.i_input("1-Eliminar grupo\n2-Eliminar alumno\n") == 1:
+            self.delete(nombre)
+        else:
+            h = self.primero
+            while not h == None and not h.nombre == nombre:
+                print(h)
+                h = h.siguiente
+            if not h == None:
+                h.delete(v.s_input("Ingrese el codigo del alumno: "))
+            else:
+                print("404 Not Found")
 
     def delete(self, nombre):
         h = self.primero
@@ -67,3 +80,10 @@ class Grupos:
             pass
         else:
             h = h.siguiente.siguiente
+
+    def sort(self, nombre):
+        h = self.primero
+        while not h == None and h.nombre == nombre:
+            h = h.siguiente
+        if not h == None:
+            h.quick(0, h.getSize() - 1)
