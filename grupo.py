@@ -8,25 +8,25 @@ class Grupo:
         self.siguiente = siguiente
 
     def add(self, alumno):
-        if self.primero == None:
+        if self.primero is None:
             self.primero = alumno
         else:
             h = self.primero
-            while not h.siguiente == None:
+            while h.siguiente is not None:
                 h = h.siguiente
             h.siguiente = alumno
 
     def getSize(self):
         h = self.primero
         i = 0
-        while not h == None:
+        while h is not None:
             h = h.siguiente
             i += 1
         return i
 
     def modify(self, codigo):
         h = self.primero
-        while not h == None and not h.codigo == codigo:
+        while h is not None and not h.codigo == codigo:
             h = h.siguiente
         h.nombre = v.s_input("Ingrese Nombre: ")
         h.codigo = v.i_input("Ingrese codigo: ")
@@ -34,21 +34,21 @@ class Grupo:
 
     def delete(self, codigo):
         h = self.primero
-        while not h == None and not h.codigo == codigo:
+        while h is not None and not h.codigo == codigo:
             h = h.siguiente
 
-        if h.siguiente == None:
+        if h.siguiente is None:
             h = None
-        elif h == None:
+        elif h is None:
             pass
         else:
             h = h.siguiente.siguiente
 
     def show(self):
         h = self.primero
-        while not h == None:
-            print(f"\tNombre:   {h.nombre}\n" \
-                  f"\tCodigo:   {h.codigo}\n" \
+        while h is not None:
+            print(f"\tNombre:   {h.nombre}\n"
+                  f"\tCodigo:   {h.codigo}\n"
                   f"\tPromedio: {h.calificacion}\n")
             h = h.siguiente
 

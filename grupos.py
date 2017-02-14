@@ -6,7 +6,7 @@ class Grupos:
         self.primero = None
 
     def isEmpty(self):
-        if self.primero == None:
+        if self.primero is None:
             return True
         else:
             return False
@@ -16,7 +16,7 @@ class Grupos:
             self.primero = grupo
         else:
             h = self.primero
-            while not h.siguiente == None:
+            while h.siguiente is not None:
                 h = h.siguiente
             h.siguiente = grupo
 
@@ -26,23 +26,23 @@ class Grupos:
             return None
 
         h = self.primero
-        while not h == None:
+        while h is not None:
             print(h.nombre + ": ")
             h.show()
             h = h.siguiente
 
     def getGroup(self, name):
         h = self.primero
-        while not h == None and not h.nombre == name:
+        while h is not None and not h.nombre == name:
             h = h.siguiente
-        if h == None:
+        if h is None:
             return "nuevo"
         else:
             return h
 
     def modify(self, nombre):
         h = self.primero
-        while not h == None and not h.nombre == nombre:
+        while h is not None and not h.nombre == nombre:
             h = h.siguiente
 
         y = v.i_input("1-Cambiar nombre de grupo\n2-Editar alumno de grupo\n")
@@ -62,28 +62,28 @@ class Grupos:
             self.delete(nombre)
         else:
             h = self.primero
-            while not h == None and not h.nombre == nombre:
+            while h is not None and not h.nombre == nombre:
                 print(h)
                 h = h.siguiente
-            if not h == None:
+            if h is not None:
                 h.delete(v.s_input("Ingrese el codigo del alumno: "))
             else:
                 print("404 Not Found")
 
     def delete(self, nombre):
         h = self.primero
-        while not h == None and not h.nombre == nombre:
+        while h is not None and not h.nombre == nombre:
             h = h.siguiente
-        if h.siguiente == None:
+        if h.siguiente is None:
             h = None
-        elif h == None:
+        elif h is None:
             pass
         else:
             h = h.siguiente.siguiente
 
     def sort(self, nombre):
         h = self.primero
-        while not h == None and h.nombre == nombre:
+        while h is not None and h.nombre == nombre:
             h = h.siguiente
-        if not h == None:
+        if h is not None:
             h.quick(0, h.getSize() - 1)
