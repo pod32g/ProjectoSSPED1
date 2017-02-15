@@ -38,7 +38,7 @@ class Tools():
 
     @staticmethod
     def toFile(data, filename):
-        with open(filename) as file:
+        with open(filename, 'w+') as file:
             file.write(data)
 
     @staticmethod
